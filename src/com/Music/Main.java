@@ -25,9 +25,13 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        //System.out.println(System.getProperty("user.dir"));
-        String path = System.getProperty("user.dir") + "\\sounds\\cdp220r\\stgrpno\\3an_cdp220r_stgrpno.wav";
+        System.out.println(note);
+        
+        System.out.println(System.getProperty("user.dir"));
+        String path = System.getProperty("user.dir") +  "\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
         System.out.println(path);
+
+        System.out.println("\n\n\n");
         try {
             File file = new File(path);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
