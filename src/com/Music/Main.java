@@ -1,7 +1,8 @@
-package MusicLearningGame.src.com.Music;
+package com.Music;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
@@ -25,15 +26,18 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         //System.out.println(System.getProperty("user.dir"));
-        String path = System.getProperty("user.dir") + "\\PREE PEE POO POO I HATE BRYSON\\src\\com\\Music\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
-        File file = new File(path);
-
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-        clip.start();
-
-        input.next();
-        input.close();
+        String path = System.getProperty("user.dir") + "\\sounds\\cdp220r\\stgrpno\\3an_cdp220r_stgrpno.wav";
+        System.out.println(path);
+        try {
+            File file = new File(path);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            input.next();
+            input.close();
+        }catch(FileNotFoundException e){
+            System.out.println("File Not Found");
+        }
     }
 }
