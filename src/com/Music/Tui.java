@@ -12,18 +12,11 @@ public class Tui {
             System.out.println("R: PlayRandomSound D: CurrentPath G: GUI");
             Scanner input = new Scanner(System.in);
             select = input.next().charAt(0);
-            switch (select){
-                case 'R':
-                    sound.playRandomSound();
-                    break;
-                case 'D':
-                    sound.getSoundDir();
-                    break;
-                case 'G':
-                    mygui.swingEnable();
-                default:
-                    System.out.println("Invalid Option");
-                    break;
+            switch (select) {
+                case 'R' -> sound.playRandomSound();
+                case 'D' -> sound.getSoundDir();
+                case 'G' -> mygui.swingEnable();
+                default -> System.out.println("Invalid Option");
             }
 
         }
