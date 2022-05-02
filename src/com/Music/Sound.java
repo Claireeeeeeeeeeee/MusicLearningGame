@@ -10,12 +10,20 @@ import java.util.Scanner;
 public class Sound {
     Random rand = new Random();
     Scanner input = new Scanner(System.in);
-    String[] notes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
+    String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
+    String[] validLowNotes = {"an", "as", "bn"};
+    String[] validHighNotes = {"cn"};
+
     private String path;
 
     public void playRandomSound() {
         int octave = rand.nextInt(8);
-        String note = notes[rand.nextInt(notes.length - 1)];
+        String note;
+
+        if (octave == 0) { note = validLowNotes[rand.nextInt(validLowNotes.length)]; }
+        else if (octave == 8) {note = validHighNotes[rand.nextInt(validHighNotes.length)];}
+        else {note = validNotes[rand.nextInt(validNotes.length)];}
+        
         path = System.getProperty("user.dir") +  "\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
         try {
             File file = new File(path);
