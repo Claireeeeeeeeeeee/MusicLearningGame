@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class Tui {
     Sound sound = new Sound();
-    Swing mygui = new Swing(500, 500);
+    Swing mygui = new Swing();
+
+    Tui(){
+        select();
+    }
 
     public void select() {
         char select = 0;
