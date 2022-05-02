@@ -1,4 +1,4 @@
-package com.Music;
+package MusicLearningGame.src.com.Music;
 
 import javax.sound.sampled.*;
 import java.io.File;
