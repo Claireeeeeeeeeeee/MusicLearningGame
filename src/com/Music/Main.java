@@ -14,7 +14,7 @@ public class Main {
         //char[] notes = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
         //char[] accidentals = {'n','s'};
         //char[] notesThatCanBeSharp = {'c'}
-
+        //lmao
         int octave;
         String note;
 
