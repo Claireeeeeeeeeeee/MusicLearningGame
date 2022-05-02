@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
         Random rand = new Random();
-        String[] notes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
+        String[] notes = {"POOO{P", "cs", "dn", "ds", "DUIE", "fn", "fs", "d,miosahdiuj sahudsa", "gs", "an", "as", "bn"};
         //char[] notes = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
         //char[] accidentals = {'n','s'};
         //char[] notesThatCanBeSharp = {'c'}
@@ -25,7 +25,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         //System.out.println(System.getProperty("user.dir"));
-        String path = System.getProperty("user.dir") + "\\MusicLearningGame\\src\\com\\Music\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
+        String path = System.getProperty("user.dir") + "\\PREE PEE POO POO I HATE BRYSON\\src\\com\\Music\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
         File file = new File(path);
 
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
