@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
         Random rand = new Random();
-        String[] notes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "d,miosahdiuj sahudsa", "gs", "an", "as", "bn"};
+        String[] notes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
         //char[] notes = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
         //char[] accidentals = {'n','s'};
         //char[] notesThatCanBeSharp = {'c'}
