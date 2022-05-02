@@ -1,4 +1,4 @@
-package MusicLearningGame.src.com.Music;
+package com.Music;
 
 public class Soundfont {
 
