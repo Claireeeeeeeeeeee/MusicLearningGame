@@ -22,12 +22,11 @@ public class Main {
         String note;
 
         octave = rand.nextInt(8);
-        
+
         if (octave == 0) {
             note = validLowNotes[rand.nextInt(validLowNotes.length)];
         } else if (octave == 8) {
             note = validHighNotes[rand.nextInt(validHighNotes.length)];
-
         } else {
             note = validNotes[rand.nextInt(validNotes.length)];
         }
