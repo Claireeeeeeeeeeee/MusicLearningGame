@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Sound {
+public class Sound implements SoundInterface {
     Random rand = new Random();
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
@@ -44,6 +44,16 @@ public class Sound {
 
     public void getSoundDir(){
         System.out.println(path);
+    }
+
+    @Override
+    public void toNoteNumber() {
+
+    }
+
+    @Override
+    public int compareNotes() {
+        return 0;
     }
 
 }
