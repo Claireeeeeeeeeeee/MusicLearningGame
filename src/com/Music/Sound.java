@@ -21,8 +21,10 @@ public class Sound {
     private String path;
 
     public void playSound(){
+        int i = input.nextInt();
+        path = keyboardLength[i];
         try {
-            File file = new File(keyboardLength[input.nextInt()]);
+            File file = new File(keyboardLength[i]);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
@@ -73,7 +75,7 @@ public class Sound {
     public void noteToNumber() {
         path = "";
         File file = new File(path);
-        int i =0;
+        int i = 0;
 
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
@@ -89,9 +91,4 @@ public class Sound {
             }
         System.out.println("Loaded Sounds");
     }
-
-    public int compareNotes() {
-        return 0;
-    }
-
 }
