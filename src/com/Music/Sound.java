@@ -28,13 +28,15 @@ public class Sound implements SoundInterface {
             clip.open(audioStream);
             clip.start();
         }catch(FileNotFoundException e){
-            System.out.println("File Not Found");
+            System.err.println("File Not Found: " + e.getMessage());
         }catch(UnsupportedAudioFileException e){
-            System.out.println("Unsupported Audio File");
+            System.err.println("Unsupported Audio File: " + e.getMessage());
         }catch(LineUnavailableException e){
-            System.out.println("Line Unavailable");
+            System.err.println("Line Unavailable: " + e.getMessage());
         }catch(IOException e){
-            System.out.println("IO Exception");
+            System.err.println("IO Exception: " + e.getMessage());
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.err.println("Array index out of bounds: " + e.getMessage());
         }
     }
 
@@ -54,13 +56,13 @@ public class Sound implements SoundInterface {
             clip.open(audioStream);
             clip.start();
         }catch(FileNotFoundException e){
-            System.out.println("File Not Found");
+            System.err.println("File Not Found: " + e.getMessage());
         }catch(UnsupportedAudioFileException e){
-            System.out.println("Unsupported Audio File");
+            System.err.println("Unsupported Audio File: " + e.getMessage());
         }catch(LineUnavailableException e){
-            System.out.println("Line Unavailable");
+            System.err.println("Line Unavailable: " + e.getMessage());
         }catch(IOException e){
-            System.out.println("IO Exception");
+            System.err.println("IO Exception:" + e.getMessage());
         }
     }
 
