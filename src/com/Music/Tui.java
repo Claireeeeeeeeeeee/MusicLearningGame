@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Tui {
     Sound sound = new Sound();
-    Swing mygui = new Swing();
+    Swing mygui = new Swing(2);
 
     Tui(){
         select();
@@ -13,23 +13,25 @@ public class Tui {
     public void select() {
         char select = 0;
         while (select != 'Q') {
-            System.out.println("R: PlayRandomSound D: CurrentPath G: GUI");
+            System.out.println("R: PlayRandomSound D: CurrentPath M: PlayManualSound G: GUI");
             Scanner input = new Scanner(System.in);
             select = input.next().charAt(0);
             switch (select) {
                 case 'R':
                     sound.playRandomSound();
-                break;
+                    break;
                 case 'D':
                     sound.getSoundDir();
-                break;
+                    break;
+                case 'M':
+                    sound.playSound();
+                    break;
                 case 'G':
                     mygui.swingEnable();
-                break;
+                    break;
                 default: System.out.println("Invalid Option");
                 break;
             }
-
         }
     }
 }
