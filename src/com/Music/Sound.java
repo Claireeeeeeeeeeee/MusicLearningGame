@@ -11,7 +11,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Sound implements SoundInterface {
+public class Sound {
     Random rand = new Random();
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
@@ -70,7 +70,6 @@ public class Sound implements SoundInterface {
         System.out.println(path);
     }
 
-    @Override
     public void noteToNumber() {
         path = "";
         File file = new File(path);
@@ -88,9 +87,9 @@ public class Sound implements SoundInterface {
                         i++;
                 }
             }
+        System.out.println("Loaded Sounds");
     }
 
-    @Override
     public int compareNotes() {
         return 0;
     }
