@@ -21,9 +21,9 @@ public class Sound {
     private String path;
 
     public void playSound(){
-        int i = input.nextInt();
-        path = keyboardLength[i];
         try {
+            int i = input.nextInt();
+            path = keyboardLength[i];
             File file = new File(keyboardLength[i]);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
@@ -42,6 +42,28 @@ public class Sound {
         }
     }
 
+    public void playSound(int i){
+        try {
+            path = keyboardLength[i];
+            File file = new File(keyboardLength[i]);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        }catch(FileNotFoundException e){
+            System.err.println("File Not Found: " + e.getMessage());
+        }catch(UnsupportedAudioFileException e){
+            System.err.println("Unsupported Audio File: " + e.getMessage());
+        }catch(LineUnavailableException e){
+            System.err.println("Line Unavailable: " + e.getMessage());
+        }catch(IOException e){
+            System.err.println("IO Exception: " + e.getMessage());
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.err.println("Array index out of bounds: " + e.getMessage());
+        }
+    }
+
+    //WARNING: Will soon be redundant.
     public void playRandomSound() {
         int octave = rand.nextInt(8);
         String note;
@@ -74,7 +96,6 @@ public class Sound {
 
     public void noteToNumber() {
         path = "";
-        File file = new File(path);
         int i = 0;
 
             for (int octave = 0; octave <= 8; octave++) {

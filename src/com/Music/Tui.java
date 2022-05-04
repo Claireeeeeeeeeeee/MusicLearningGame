@@ -1,9 +1,11 @@
 package com.Music;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Tui {
     Sound sound = new Sound();
+    Random rand = new Random();
     Swing mygui = new Swing(2);
 
     Tui(){
@@ -18,7 +20,7 @@ public class Tui {
             select = input.next().charAt(0);
             switch (select) {
                 case 'R':
-                    sound.playRandomSound();
+                    sound.playSound(rand.nextInt(88));
                     break;
                 case 'D':
                     sound.getSoundDir();
