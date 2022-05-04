@@ -7,6 +7,7 @@ public class Tui {
     Sound sound = new Sound();
     Random rand = new Random();
     Swing mygui = new Swing(2);
+    Interval interval = new Interval();
 
     Tui(){
         select();
@@ -14,10 +15,10 @@ public class Tui {
 
     public void select() {
         char select = 0;
-        while (select != 'Q') {
-            System.out.println("R: PlayRandomSound D: CurrentPath M: PlayManualSound G: GUI");
+        while (true) {
+            System.out.println("M: ManualSound\nR: RandomSound:\nI: Interval\nG: GUI\nQ: Quit");
             Scanner input = new Scanner(System.in);
-            select = input.next().charAt(0);
+            select = input.next().toUpperCase().charAt(0);
             switch (select) {
                 case 'R':
                     sound.playSound(rand.nextInt(88));
@@ -30,6 +31,13 @@ public class Tui {
                     break;
                 case 'G':
                     mygui.swingEnable();
+                    break;
+                case 'Q':
+                    System.out.println("Quitting");
+                    System.exit(0);
+                    break;
+                case 'I':
+                    interval.playSound();
                     break;
                 default: System.out.println("Invalid Option");
                 break;
