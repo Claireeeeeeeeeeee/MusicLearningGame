@@ -20,6 +20,10 @@ public class Sound {
     private static String[] keyboardLength = new String[88];
     private String path;
 
+    Sound(){
+        noteToNumber();
+    }
+
     public void playSound(){
         try {
             int i = input.nextInt();
