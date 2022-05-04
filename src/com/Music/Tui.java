@@ -37,7 +37,7 @@ public class Tui {
                     System.exit(0);
                     break;
                 case 'I':
-                    interval.playSound();
+                    interval.playGame();
                     break;
                 default: System.out.println("Invalid Option");
                 break;
