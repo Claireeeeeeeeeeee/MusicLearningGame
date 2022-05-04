@@ -1,5 +1,7 @@
 package com.Music;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Random;
 
 public class Interval extends Sound{
@@ -13,25 +15,28 @@ public class Interval extends Sound{
         int note1 = rand.nextInt(75) + 12;
         int note2 = note1 - rand.nextInt(1,13);
         intervalSize = note1 - note2;
-        System.out.println(note1 + " " + note2);
+        System.out.println("DEBUG: " + note1 + " " + note2);
         super.playSound(note1);
         super.playSound(note2);
     }
 
     //User guesses the interval and is asked if they want to try again
     public void playResponse(){
-        System.out.println("1:Minor Second\n2:Major Second\n 3:Minor Third\n4:Major Third\n5:Fourth\n6:Tritone 7:Fifth\n" +
+        System.out.println("1:Minor Second\n2:Major Second\n3:Minor Third\n4:Major Third\n5:Fourth\n6:Tritone\n7:Fifth\n" +
                 "8:Augmented\n9:Sixth\n10:Dominant Seventh\n11:Major Seventh\n12:Octave");
         int answer = input.nextInt();
-        if(answer == intervalSize){
-            System.out.println("You Win! Would you like to try again?");
+        if(answer == intervalSize) {
+            System.out.print("You Win!");
+        }else{
+            System.out.print("You Lose!");
+        }
+        System.out.println(" Would you like to try again\nY: Yes\nN: No");
             answer = input.next().toUpperCase().charAt(0);
             if(answer == 'Y'){
                 playGame();
             }else{
                 return;
             }
-        }
     }
 
     public void playGame(){
