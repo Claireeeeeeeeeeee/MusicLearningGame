@@ -39,6 +39,8 @@ public class Sound {
             System.err.println("IO Exception: " + e.getMessage());
         }catch(ArrayIndexOutOfBoundsException e){
             System.err.println("Array index out of bounds: " + e.getMessage());
+        }catch(InputMismatchException e){
+            System.err.println("Input Mismatch Exception\nWarning: Restart Required (needs fixing) ");
         }
     }
 
@@ -110,6 +112,6 @@ public class Sound {
                         i++;
                 }
             }
-        System.out.println("Loaded Sounds");
+        System.out.println("Loaded Sounds!\n");
     }
 }
