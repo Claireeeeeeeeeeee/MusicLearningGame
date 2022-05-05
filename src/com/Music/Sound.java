@@ -12,15 +12,18 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Sound {
+public class Sound{
     Random rand = new Random();
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
     String[] validLowNotes = {"an", "as", "bn"};
     String[] validHighNotes = {"cn"};
-    private static String[] keyboardLength = new String[88];
     ArrayList<String> soundFont = new ArrayList<>();
-    private static String path, soundPath, soundName, prettySoundName;
+    ArrayList<String> soundPath = new ArrayList<>();
+    ArrayList<String> soundName = new ArrayList<>();
+    private static String[] keyboardLength = new String[88];
+    private static String path, currentSoundPath, currentSoundName, currentPrettySoundName;
+    static int i = 0;
 
     //Constructors
 
@@ -28,22 +31,49 @@ public class Sound {
     }
 
     Sound(String soundPath, String soundName, boolean loadSound){
-        this.soundPath = soundPath;
-        this.soundName = soundName;
-        this.prettySoundName = soundName.substring(0,soundName.lastIndexOf('.'));
+        currentSoundPath = soundPath;
+        currentSoundName = soundName;
+        currentPrettySoundName = soundName.substring(0,soundName.lastIndexOf('.'));
         if(loadSound == true) {
             loadSound();
         }
     }
 
     //Getters
-
-    public String getSoundName(){
-        return prettySoundName;
+    public static String getPath(){
+        return path;
     }
 
-    public void getSoundDir(){
-        System.out.println(path);
+    public static String getCurrentSoundPath(){
+        return currentSoundPath;
+    }
+
+    public static String getCurrentSoundName(){
+        return currentSoundName;
+    }
+
+    public String getCurrentPrettySoundName(){
+        return currentPrettySoundName;
+    }
+
+    //Setters
+
+    public static void setPath(String set){
+        path = set;
+
+    }
+
+    public static void setCurrentSoundPath(String set){
+        currentSoundPath = set;
+    }
+
+    public static void setCurrentSoundName(String set){
+        currentSoundName = set;
+
+    }
+
+    public static void setCurrentPrettySoundName(String set){
+        currentPrettySoundName = set;
     }
 
     public void playSound(){
@@ -119,11 +149,9 @@ public class Sound {
     }
 
     public void loadSound() {
-        int i = 0;
-
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
-                    path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + soundPath + "\\" + octave + validNotes[noteName] + "_" + soundName;
+                    path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + currentSoundPath + "\\" + octave + validNotes[noteName] + "_" + currentSoundName;
                     Path myPath = Paths.get(path);
                     if(Files.notExists(myPath)){
                         continue;
@@ -134,7 +162,9 @@ public class Sound {
                 }
             }
         System.out.println("Loaded Sounds!\n");
-        soundFont.add(getSoundName());
+        soundFont.add(getCurrentPrettySoundName());
+        soundPath.add(getCurrentSoundPath());
+        soundName.add(getCurrentSoundName());
     }
 
 }

@@ -18,10 +18,14 @@ public class Tui extends Main {
 
     public void chooseInstrument(){
         try {
-            for (int i = 0; i <= cdp220r_stgrpno.soundFont.size() - 1; i++)
+            for (int i = 0; i <= cdp220r_stgrpno.soundFont.size() - 1; i++) {
+
                 System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + cdp220r_stgrpno.soundFont.get(i));
-            selected = cdp220r_stgrpno.soundFont.get(input.nextInt() - 1);
-            System.out.println("Selected " + selected + "\n");
+                selected = cdp220r_stgrpno.soundFont.get(input.nextInt() - 1);
+                System.out.println("Selected " + selected + "\n");
+                cdp220r_stgrpno.setCurrentSoundPath(cdp220r_stgrpno.soundPath.get(i));
+                cdp220r_stgrpno.setCurrentSoundName(cdp220r_stgrpno.soundName.get(i));
+            }
         }catch(IndexOutOfBoundsException e){
             System.err.println("Index Out Of Bounds: " + e.getMessage() + "\nSoundfont not found");
             chooseInstrument();
@@ -38,7 +42,7 @@ public class Tui extends Main {
                     cdp220r_stgrpno.playSound(rand.nextInt(88));
                     break;
                 case 'D':
-                    cdp220r_stgrpno.getSoundDir();
+                    System.out.println(cdp220r_stgrpno.getPath());
                     break;
                 case 'M':
                     cdp220r_stgrpno.playSound();
