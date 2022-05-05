@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -18,10 +19,31 @@ public class Sound {
     String[] validLowNotes = {"an", "as", "bn"};
     String[] validHighNotes = {"cn"};
     private static String[] keyboardLength = new String[88];
-    private String path;
+    ArrayList<String> soundFont = new ArrayList<>();
+    private static String path, soundPath, soundName, prettySoundName;
+
+    //Constructors
 
     Sound(){
-        noteToNumber();
+    }
+
+    Sound(String soundPath, String soundName, boolean loadSound){
+        this.soundPath = soundPath;
+        this.soundName = soundName;
+        this.prettySoundName = soundName.substring(0,soundName.lastIndexOf('.'));
+        if(loadSound == true) {
+            loadSound();
+        }
+    }
+
+    //Getters
+
+    public String getSoundName(){
+        return prettySoundName;
+    }
+
+    public void getSoundDir(){
+        System.out.println(path);
     }
 
     public void playSound(){
@@ -96,17 +118,12 @@ public class Sound {
         }
     }
 
-    public void getSoundDir(){
-        System.out.println(path);
-    }
-
-    public void noteToNumber() {
-        path = "";
+    public void loadSound() {
         int i = 0;
 
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
-                    path = System.getProperty("user.dir") + "\\sounds\\cdp220r\\stgrpno\\" + octave + validNotes[noteName] + "_cdp220r_stgrpno.wav";
+                    path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + soundPath + "\\" + octave + validNotes[noteName] + "_" + soundName;
                     Path myPath = Paths.get(path);
                     if(Files.notExists(myPath)){
                         continue;
@@ -117,5 +134,7 @@ public class Sound {
                 }
             }
         System.out.println("Loaded Sounds!\n");
+        soundFont.add(getSoundName());
     }
+
 }

@@ -1,9 +1,11 @@
 package com.Music;
 
 public class Main {
+    // FOR GOD SAKES PLEASE MAKE THE SOUNDNAME EQUAL TO THE INSTANCE NAME
+    Sound sound = new Sound();
+    Sound cdp220r_stgrpno = new Sound("cdp220r\\stgrpno","cdp220r_stgrpno.wav",true);
 
     public static void main(String[] args){
-        Sound sound = new Sound();
         Tui t = new Tui();
     }
 }
