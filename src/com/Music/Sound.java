@@ -18,9 +18,9 @@ public class Sound{
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
     String[] validLowNotes = {"an", "as", "bn"};
     String[] validHighNotes = {"cn"};
-    ArrayList<String> soundFont = new ArrayList<>();
-    ArrayList<String> soundPath = new ArrayList<>();
-    ArrayList<String> soundName = new ArrayList<>();
+    static ArrayList<String> soundFont = new ArrayList<>();
+    static ArrayList<String> soundPath = new ArrayList<>();
+    static ArrayList<String> soundName = new ArrayList<>();
     private static String[] keyboardLength = new String[88];
     private static String path, currentSoundPath, currentSoundName, currentPrettySoundName;
     static int i = 0;
