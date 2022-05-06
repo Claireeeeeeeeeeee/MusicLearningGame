@@ -3,53 +3,43 @@ package com.Music;
 import javax.swing.*;
 import java.awt.*;
 
-public class Swing {
-    JFrame frame = new JFrame("Gustav");
+public class Swing extends JFrame{
     Dimension tool = Toolkit.getDefaultToolkit().getScreenSize();
     private int monWidth = (int) tool.getWidth();
     private int monHeight = (int) tool.getHeight();
     int sizeModifier;
-
     ImageIcon image = new ImageIcon("pianoicon.png");
 
-    Swing(){
+    //Constructors
 
-    }
-
-    Swing(int height, int width){
-        this.monHeight = height;
+    Swing(int width, int height){
         this.monWidth = width;
+        this.monHeight = height;
     }
 
     Swing(int sizeModifier){
         this.sizeModifier = sizeModifier;
+        this.monWidth = monWidth / sizeModifier;
+        this.monHeight = monHeight / sizeModifier;
 }
 
     public void swingEnable(){
-      frame.setVisible(true);
+      this.setVisible(true);
       swingSettings();
       placeSwingElements();
     }
 
-    public void swingSettings(){
-        try {
-            int scaledMonWidth = monWidth / sizeModifier;
-            int scaledMonHeight = monHeight / sizeModifier;
-            frame.setSize(scaledMonWidth, scaledMonHeight);
-            frame.setIconImage(image.getImage());
-        }catch(ArithmeticException e) {
-            int scaledMonWidth = monWidth;
-            int scaledMonHeight = monHeight;
-            frame.setIconImage(image.getImage());
-            frame.setSize(scaledMonWidth, scaledMonHeight);
+    //Methods
 
-        }finally{
-            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        }
+    public void swingSettings(){
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(true);
+        this.setSize(monWidth, monHeight);
     }
 
     public void placeSwingElements(){
-
+        this.setIconImage(image.getImage());
+        this.getContentPane().setBackground(new Color(30,30,30));
     }
 
 }
