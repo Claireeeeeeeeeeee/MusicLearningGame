@@ -4,11 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Swing {
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame("Gustav");
     Dimension tool = Toolkit.getDefaultToolkit().getScreenSize();
     private int monWidth = (int) tool.getWidth();
     private int monHeight = (int) tool.getHeight();
     int sizeModifier;
+
+    ImageIcon image = new ImageIcon("pianoicon.png");
 
     Swing(){
 
@@ -34,10 +36,11 @@ public class Swing {
             int scaledMonWidth = monWidth / sizeModifier;
             int scaledMonHeight = monHeight / sizeModifier;
             frame.setSize(scaledMonWidth, scaledMonHeight);
+            frame.setIconImage(image.getImage());
         }catch(ArithmeticException e) {
             int scaledMonWidth = monWidth;
             int scaledMonHeight = monHeight;
-            System.out.println("Resolution is " + scaledMonWidth + " " + scaledMonHeight);
+            frame.setIconImage(image.getImage());
             frame.setSize(scaledMonWidth, scaledMonHeight);
 
         }finally{
