@@ -4,10 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Tui extends Main {
-    Random rand = new Random();
-    Swing mygui = new Swing(2);
-    Interval interval = new Interval();
-    Scanner input = new Scanner(System.in);
     static String selected;
 
     Tui(){
