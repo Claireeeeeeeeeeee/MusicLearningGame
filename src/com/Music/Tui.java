@@ -31,31 +31,18 @@ public class Tui extends Main {
     public void select() {
         char select = 0;
         while (true) {
-            System.out.println("M: ManualSound\nR: RandomSound\nI: Interval\nG: GUI\nQ: Quit");
+            System.out.println("M: ManualSound\nR: RandomSound\nI: Interval\nQ: Quit");
             select = input.next().toUpperCase().charAt(0);
             switch (select) {
-                case 'R':
-                    cdp220r_stgrpno.playSound(rand.nextInt(88));
-                    break;
-                case 'D':
-                    System.out.println(cdp220r_stgrpno.getPath());
-                    break;
-                case 'M':
-                    cdp220r_stgrpno.playSound();
-                    break;
-                case 'G':
-                    mygui.swingEnable();
-                    break;
-                case 'Q':
+                case 'R' -> cdp220r_stgrpno.playSound(rand.nextInt(88));
+                case 'D' -> System.out.println(cdp220r_stgrpno.getPath());
+                case 'M' -> cdp220r_stgrpno.playSound();
+                case 'Q' -> {
                     System.out.println("Quitting");
                     System.exit(0);
-                    break;
-                case 'I':
-                    interval.playGame();
-                    break;
-                default:
-                    System.out.println("Invalid Option\n");
-                break;
+                }
+                case 'I' -> interval.playGame();
+                default -> System.out.println("Invalid Option\n");
             }
         }
     }
