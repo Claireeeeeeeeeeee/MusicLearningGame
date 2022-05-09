@@ -18,7 +18,7 @@ public class Sound{
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
     String[] validLowNotes = {"an", "as", "bn"};
     String[] validHighNotes = {"cn"};
-    static ArrayList<String> soundFont = new ArrayList<>();
+    static ArrayList<String> soundFontPretty = new ArrayList<>();
     static ArrayList<String> soundPath = new ArrayList<>();
     static ArrayList<String> soundName = new ArrayList<>();
     private static String[] keyboardLength = new String[88];
@@ -28,15 +28,6 @@ public class Sound{
     //Constructors
 
     Sound(){
-    }
-
-    Sound(String soundPath, String soundName, boolean loadSound){
-        currentSoundPath = soundPath;
-        currentSoundName = soundName;
-        currentPrettySoundName = soundName.substring(0,soundName.lastIndexOf('.'));
-        if(loadSound == true) {
-            loadSound();
-        }
     }
 
     //Getters
@@ -53,7 +44,8 @@ public class Sound{
     }
 
     public String getCurrentPrettySoundName(){
-        return currentPrettySoundName;
+        String pretty = getCurrentSoundName().substring(0, getCurrentSoundName().lastIndexOf('.'));
+        return pretty;
     }
 
     //Setters
@@ -148,7 +140,9 @@ public class Sound{
         }
     }
 
-    public void loadSound() {
+    public void loadSound(String mySoundPath, String mySoundName) {
+        currentSoundPath = mySoundPath;
+        currentSoundName = mySoundName;
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
                     path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + currentSoundPath + "\\" + octave + validNotes[noteName] + "_" + currentSoundName;
@@ -162,7 +156,7 @@ public class Sound{
                 }
             }
         System.out.println("Loaded Sounds!\n");
-        soundFont.add(getCurrentPrettySoundName());
+        soundFontPretty.add(getCurrentPrettySoundName());
         soundPath.add(getCurrentSoundPath());
         soundName.add(getCurrentSoundName());
     }
