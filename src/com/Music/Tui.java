@@ -1,6 +1,10 @@
 package com.Music;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Tui extends Main {
+    Scanner input = new Scanner(System.in);
     static String selected;
 
     Tui(){
@@ -11,10 +15,12 @@ public class Tui extends Main {
 
     public void chooseInstrument(){
         try {
+            int instrumentIndex;
             for (int i = 0; i <= sound.soundFontPretty.size() - 1; i++) {
 
                 System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + sound.soundFontPretty.get(i));
-                selected = sound.soundFontPretty.get(input.nextInt() - 1);
+                instrumentIndex = input.nextInt();
+                selected = sound.soundFontPretty.get(instrumentIndex - 1);
                 System.out.println("Selected " + selected + "\n");
                 //Actually loading the proper sound needs to still be implemented
             }
