@@ -42,10 +42,11 @@ public class Swing extends JFrame{
        int sidePanelSize = monWidth / 3;
        int centerPanelSize = monWidth - sidePanelSize;
 
-        ImageIcon image = new ImageIcon("pianoicon.png");
+        ImageIcon image = new ImageIcon("swing/pianoicon.png");
         JPanel sidePanel = new JPanel();
         JPanel centerPanel = new JPanel();
         Border border = BorderFactory.createLineBorder(Color.green,3);
+        JButton Interval = new JButton();
 
         sidePanel.setBackground(new Color(0xfef3bd));
         sidePanel.setBounds(0,0,sidePanelSize,monHeight);
