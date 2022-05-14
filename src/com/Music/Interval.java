@@ -11,7 +11,6 @@ public class Interval extends Sound{
 
 
     //plays two notes, and compares the two
-    @Override
     public void playSound(){
         int note2 = rand.nextInt(75) + 12;
         int note1 = note2 - rand.nextInt(1,13);
