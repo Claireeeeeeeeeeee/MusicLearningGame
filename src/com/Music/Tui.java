@@ -38,7 +38,7 @@ public class Tui extends Main {
             switch (select) {
                 case 'R' -> sound.playSound(rand.nextInt(88));
                 case 'D' -> System.out.println(sound.getPath());
-                case 'M' -> sound.playSound();
+                case 'M' -> sound.playSound(input.nextInt());
                 case 'Q' -> {
                     System.out.println("Quitting");
                     System.exit(0);
