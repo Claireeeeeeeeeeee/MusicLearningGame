@@ -113,33 +113,6 @@ public class Sound{
         }
     }
 
-    //WARNING: Will soon be redundant.
-    public void playRandomSound() {
-        int octave = rand.nextInt(8);
-        String note;
-
-        if (octave == 0) { note = validLowNotes[rand.nextInt(validLowNotes.length)]; }
-        else if (octave == 8) {note = validHighNotes[rand.nextInt(validHighNotes.length)];}
-        else {note = validNotes[rand.nextInt(validNotes.length)];}
-        
-        path = System.getProperty("user.dir") +  "\\sounds\\cdp220r\\stgrpno\\" + octave + note + "_cdp220r_stgrpno.wav";
-        try {
-            File file = new File(path);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        }catch(FileNotFoundException e){
-            System.err.println("File Not Found: " + e.getMessage());
-        }catch(UnsupportedAudioFileException e){
-            System.err.println("Unsupported Audio File: " + e.getMessage());
-        }catch(LineUnavailableException e){
-            System.err.println("Line Unavailable: " + e.getMessage());
-        }catch(IOException e){
-            System.err.println("IO Exception:" + e.getMessage());
-        }
-    }
-
     public void loadSound(String mySoundPath, String mySoundName) {
         currentSoundPath = mySoundPath;
         currentSoundName = mySoundName;
