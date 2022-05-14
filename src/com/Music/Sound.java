@@ -52,46 +52,19 @@ public class Sound{
 
     public static void setPath(String set){
         path = set;
-
     }
-
     public static void setCurrentSoundPath(String set){
         currentSoundPath = set;
     }
-
     public static void setCurrentSoundName(String set){
         currentSoundName = set;
-
     }
-
     public static void setCurrentPrettySoundName(String set){
         currentPrettySoundName = set;
     }
 
-    public void playSound(){
-        try {
-            int i = input.nextInt();
-            path = keyboardLength[i];
-            File file = new File(keyboardLength[i]);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        }catch(FileNotFoundException e){
-            System.err.println("File Not Found: " + e.getMessage());
-        }catch(UnsupportedAudioFileException e){
-            System.err.println("Unsupported Audio File: " + e.getMessage());
-        }catch(LineUnavailableException e){
-            System.err.println("Line Unavailable: " + e.getMessage());
-        }catch(IOException e){
-            System.err.println("IO Exception: " + e.getMessage());
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.err.println("Array index out of bounds: " + e.getMessage());
-        }catch(InputMismatchException e){
-            System.err.println("Input Mismatch Exception\nWarning: Restart Required (needs fixing) ");
-        }
-    }
 
+    //Methods
     public void playSound(int i){
         try {
             path = keyboardLength[i];
