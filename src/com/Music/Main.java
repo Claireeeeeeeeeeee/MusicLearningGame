@@ -4,8 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    //FOR GOD SAKES PLEASE MAKE THE SOUNDNAME EQUAL TO THE INSTANCE NAME
-    //Default Sound object. Used to access Sound methods, and static variables
     static Sound sound = new Sound();
     Interval interval = new Interval();
     Random rand = new Random();
