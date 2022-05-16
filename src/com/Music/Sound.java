@@ -1,5 +1,4 @@
 package com.Music;
-
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Sound{
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
@@ -17,21 +15,14 @@ public class Sound{
     private static final String[] keyboardLength = new String[88];
     private static String path;
     static int i = 0;
-
     //Constructors
     Sound(){
     }
-
     //Getters
     public static String getPath(){
         return path;
     }
-
     //Methods
-    public String toString(){
-        return soundNamePretty.toString();
-    }
-
     public void playSound(int i){
         try {
             path = keyboardLength[i];
@@ -52,7 +43,6 @@ public class Sound{
             System.err.println("Array index out of bounds: " + e.getMessage());
         }
     }
-
     public void loadSound(String mySoundPath, String mySoundName) {
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
@@ -67,7 +57,5 @@ public class Sound{
                 }
             }
         System.out.println("Loaded Sounds!\n");
-        soundNamePretty.add(mySoundName.substring(0, mySoundName.lastIndexOf('.')));
     }
-
 }

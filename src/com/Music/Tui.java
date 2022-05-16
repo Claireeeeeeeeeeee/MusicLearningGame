@@ -7,26 +7,7 @@ public class Tui extends Main {
     static String selected;
 
     Tui(){
-        chooseInstrument();
         select();
-    }
-
-
-    public void chooseInstrument(){
-        try {
-            int instrumentIndex;
-            for (int i = 0; i <= Sound.soundNamePretty.size() - 1; i++) {
-
-                System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + Sound.soundNamePretty.get(i));
-                instrumentIndex = input.nextInt();
-                selected = Sound.soundNamePretty.get(instrumentIndex - 1);
-                System.out.println("Selected " + selected + "\n");
-                //Actually loading the proper sound needs to still be implemented
-            }
-        }catch(IndexOutOfBoundsException e){
-            System.err.println("Index Out Of Bounds: " + e.getMessage() + "\nSoundfont not found");
-            chooseInstrument();
-        }
     }
 
     public void select() {
