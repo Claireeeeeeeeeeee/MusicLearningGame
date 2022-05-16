@@ -8,14 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Sound{
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
     static ArrayList<String> soundNamePretty = new ArrayList<>();
-    private static String[] keyboardLength = new String[88];
+    private static final String[] keyboardLength = new String[88];
     private static String path;
     static int i = 0;
 
@@ -30,8 +29,7 @@ public class Sound{
 
     //Methods
     public String toString(){
-        String test = soundNamePretty.toString();
-        return test;
+        return soundNamePretty.toString();
     }
 
     public void playSound(int i){
