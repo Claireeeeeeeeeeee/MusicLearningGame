@@ -1,20 +1,28 @@
 package com.Music;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
-public class Swing extends JFrame{
+public class Swing extends JFrame implements ActionListener {
     Dimension tool = Toolkit.getDefaultToolkit().getScreenSize();
+    JButton Interval;
+    Sound sound = new Sound();
+    Random rand = new Random();
     private int monWidth = (int) tool.getWidth();
     private int monHeight = (int) tool.getHeight();
     int sizeModifier;
 
     //Constructors
-
     Swing(int width, int height){
         this.monWidth = width;
         this.monHeight = height;
+    }
+
+    public String toString(){
+        return monWidth + " " + monHeight;
     }
 
     Swing(int sizeModifier){
@@ -29,7 +37,6 @@ public class Swing extends JFrame{
     }
 
     //Methods
-
     public void swingSettings(){
         this.setVisible(true);
         this.setTitle("Gustav");
@@ -45,12 +52,17 @@ public class Swing extends JFrame{
         ImageIcon image = new ImageIcon("swing/pianoicon.png");
         JPanel sidePanel = new JPanel();
         JPanel centerPanel = new JPanel();
-        Border border = BorderFactory.createLineBorder(Color.green,3);
-        JButton Interval = new JButton();
+        Interval = new JButton();
+
+        Interval.addActionListener(this);
+        Interval.setBounds(200,0,130,50);
+        Interval.setText("Test");
+        Interval.setFocusable(false);
 
         sidePanel.setBackground(new Color(0xfef3bd));
         sidePanel.setBounds(0,0,sidePanelSize,monHeight);
         sidePanel.setLayout(null);
+        sidePanel.add(Interval);
 
         centerPanel.setBackground(Color.darkGray);
         centerPanel.setBounds(sidePanelSize,0,centerPanelSize,monHeight);
@@ -61,6 +73,14 @@ public class Swing extends JFrame{
         this.getContentPane().setBackground(new Color(255,255,255));
         this.add(sidePanel);
         this.add(centerPanel);
+    }
+
+    //Listeners
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==Interval){
+            sound.playSound(rand.nextInt(88));
+        }
     }
 
 }
