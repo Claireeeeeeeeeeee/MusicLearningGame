@@ -15,11 +15,11 @@ public class Tui extends Main {
     public void chooseInstrument(){
         try {
             int instrumentIndex;
-            for (int i = 0; i <= sound.soundNamePretty.size() - 1; i++) {
+            for (int i = 0; i <= Sound.soundNamePretty.size() - 1; i++) {
 
-                System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + sound.soundNamePretty.get(i));
+                System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + Sound.soundNamePretty.get(i));
                 instrumentIndex = input.nextInt();
-                selected = sound.soundNamePretty.get(instrumentIndex - 1);
+                selected = Sound.soundNamePretty.get(instrumentIndex - 1);
                 System.out.println("Selected " + selected + "\n");
                 //Actually loading the proper sound needs to still be implemented
             }
@@ -36,7 +36,7 @@ public class Tui extends Main {
             select = input.next().toUpperCase().charAt(0);
             switch (select) {
                 case 'R' -> sound.playSound(rand.nextInt(88));
-                case 'D' -> System.out.println(sound.getPath());
+                case 'D' -> System.out.println(Sound.getPath());
                 case 'M' -> sound.playSound(input.nextInt());
                 case 'Q' -> {
                     System.out.println("Quitting");
