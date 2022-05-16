@@ -19,6 +19,7 @@ public class Swing extends JFrame implements ActionListener {
     Swing(int width, int height){
         this.monWidth = width;
         this.monHeight = height;
+        swingEnable();
     }
 
     public String toString(){
@@ -29,6 +30,7 @@ public class Swing extends JFrame implements ActionListener {
         this.sizeModifier = sizeModifier;
         this.monWidth = monWidth / sizeModifier;
         this.monHeight = monHeight / sizeModifier;
+        swingEnable();
 }
 
     public void swingEnable(){
@@ -55,18 +57,18 @@ public class Swing extends JFrame implements ActionListener {
         Interval = new JButton();
 
         Interval.addActionListener(this);
-        Interval.setBounds(200,0,130,50);
+        Interval.setBounds(0,0,130,50);
         Interval.setText("Test");
         Interval.setFocusable(false);
 
         sidePanel.setBackground(new Color(0xfef3bd));
         sidePanel.setBounds(0,0,sidePanelSize,monHeight);
         sidePanel.setLayout(null);
-        sidePanel.add(Interval);
 
         centerPanel.setBackground(Color.darkGray);
         centerPanel.setBounds(sidePanelSize,0,centerPanelSize,monHeight);
         centerPanel.setLayout(null);
+        centerPanel.add(Interval);
 
         this.setLayout(null);
         this.setIconImage(image.getImage());
