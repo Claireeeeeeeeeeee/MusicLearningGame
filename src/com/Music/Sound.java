@@ -12,13 +12,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Sound{
-    Random rand = new Random();
     Scanner input = new Scanner(System.in);
     String[] validNotes = {"cn", "cs", "dn", "ds", "en", "fn", "fs", "gn", "gs", "an", "as", "bn"};
-    String[] validLowNotes = {"an", "as", "bn"};
-    String[] validHighNotes = {"cn"};
-    static ArrayList<String> soundPath = new ArrayList<>();
-    static ArrayList<String> soundName = new ArrayList<>();
     static ArrayList<String> soundNamePretty = new ArrayList<>();
     private static String[] keyboardLength = new String[88];
     private static String path;
@@ -61,7 +56,6 @@ public class Sound{
     }
 
     public void loadSound(String mySoundPath, String mySoundName) {
-        String prettyTemporary = mySoundName.substring(0, mySoundName.lastIndexOf('.'));
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
                     path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + mySoundPath + "\\" + octave + validNotes[noteName] + "_" + mySoundName;
@@ -75,7 +69,7 @@ public class Sound{
                 }
             }
         System.out.println("Loaded Sounds!\n");
-        soundNamePretty.add(prettyTemporary);
+        soundNamePretty.add(mySoundName.substring(0, mySoundName.lastIndexOf('.')));
     }
 
 }
