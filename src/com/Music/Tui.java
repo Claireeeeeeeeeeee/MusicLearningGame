@@ -1,6 +1,5 @@
 package com.Music;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Tui extends Main {
@@ -16,11 +15,11 @@ public class Tui extends Main {
     public void chooseInstrument(){
         try {
             int instrumentIndex;
-            for (int i = 0; i <= sound.soundFontPretty.size() - 1; i++) {
+            for (int i = 0; i <= sound.soundNamePretty.size() - 1; i++) {
 
-                System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + sound.soundFontPretty.get(i));
+                System.out.println("Choose a soundfont:\n" + i + 1 + ":" + " " + sound.soundNamePretty.get(i));
                 instrumentIndex = input.nextInt();
-                selected = sound.soundFontPretty.get(instrumentIndex - 1);
+                selected = sound.soundNamePretty.get(instrumentIndex - 1);
                 System.out.println("Selected " + selected + "\n");
                 //Actually loading the proper sound needs to still be implemented
             }
@@ -33,7 +32,7 @@ public class Tui extends Main {
     public void select() {
         char select;
         while (true) {
-            System.out.println("M: ManualSound\nR: RandomSound\nI: Interval\nQ: Quit");
+            System.out.println("M: ManualSound\nR: RandomSound\nI: Interval\nQ: Quit\nT: ToString");
             select = input.next().toUpperCase().charAt(0);
             switch (select) {
                 case 'R' -> sound.playSound(rand.nextInt(88));
@@ -44,6 +43,7 @@ public class Tui extends Main {
                     System.exit(0);
                 }
                 case 'I' -> interval.playGame();
+                case 'T' -> System.out.println(sound);
                 default -> System.out.println("Invalid Option\n");
             }
         }
