@@ -9,8 +9,7 @@ public class Main {
     Random rand = new Random();
 
     public static void main(String[] args){
-        Swing mygui = new Swing(2);
-        mygui.swingEnable();
-        Tui t = new Tui();
+        new Swing(2);
+        new Tui();
     }
 }
