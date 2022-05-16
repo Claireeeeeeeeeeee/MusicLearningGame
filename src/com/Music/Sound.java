@@ -16,8 +16,14 @@ public class Sound{
     private static String path;
     static int i = 0;
     //Constructors
-    Sound(){
+    public Sound(){
+
     }
+
+    public Sound(String mySoundPath, String mySoundName){
+        loadSound(mySoundPath, mySoundName);
+    }
+
     //Getters
     public static String getPath(){
         return path;
