@@ -9,13 +9,21 @@ public class Interval extends Sound{
     Random rand = new Random();
     static int intervalSize;
 
+    static int note1;
+    static int note2;
+
 
     //plays two notes, and compares the two
     public void playSound(){
-        int note2 = rand.nextInt(75) + 12;
-        int note1 = note2 - rand.nextInt(1,13);
+        note2 = rand.nextInt(75) + 12;
+        note1 = note2 - rand.nextInt(1,13);
         intervalSize = note2 - note1;
         System.out.println("DEBUG: " + note2 + " " + note1);
+        super.playSound(note1);
+        super.playSound(note2);
+    }
+
+    public void replaySound(){
         super.playSound(note1);
         super.playSound(note2);
     }
@@ -28,8 +36,11 @@ public class Interval extends Sound{
             int answer = input.nextInt();
             if (answer == intervalSize) {
                 System.out.print("You Win!");
-            } else {
-                System.out.print("You Lose!");
+            } else if(answer == 13){
+                replaySound();
+                playResponse();
+            } else{
+                System.out.println("You Lose!");
             }
             System.out.println(" Would you like to try again\nY: Yes\nN: No");
             answer = input.next().toUpperCase().charAt(0);
