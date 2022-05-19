@@ -4,9 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Random;
 
 public class Swing extends JFrame implements ActionListener {
+    static JPanel sidePanel = new JPanel();
+    static JPanel centerPanel = new JPanel();
     Dimension tool = Toolkit.getDefaultToolkit().getScreenSize();
     JButton Interval;
     Sound sound = new Sound();
@@ -16,14 +19,14 @@ public class Swing extends JFrame implements ActionListener {
     int sizeModifier;
 
     //Constructors
+    Swing(){
+
+    }
+
     Swing(int width, int height){
         this.monWidth = width;
         this.monHeight = height;
         swingEnable();
-    }
-
-    public String toString(){
-        return monWidth + " " + monHeight;
     }
 
     Swing(int sizeModifier){
@@ -33,12 +36,17 @@ public class Swing extends JFrame implements ActionListener {
         swingEnable();
 }
 
+//Methods
+
+    public String toString(){
+        return monWidth + " " + monHeight;
+    }
+
     public void swingEnable(){
       swingSettings();
       placeSwingElements();
     }
 
-    //Methods
     public void swingSettings(){
         this.setVisible(true);
         this.setTitle("Gustav");
@@ -52,9 +60,12 @@ public class Swing extends JFrame implements ActionListener {
        int centerPanelSize = monWidth - sidePanelSize;
 
         ImageIcon image = new ImageIcon("swing/pianoicon.png");
-        JPanel sidePanel = new JPanel();
-        JPanel centerPanel = new JPanel();
         Interval = new JButton();
+        try {
+            PianoKey key1 = new PianoKey("swing\\virtualpiano\\png\\blackkey1.png", 20, 150,20,50);
+        }catch(IOException e){
+            e.getMessage();
+        }
 
         Interval.addActionListener(this);
         Interval.setBounds(0,0,130,50);
