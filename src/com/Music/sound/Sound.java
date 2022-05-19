@@ -1,4 +1,4 @@
-package com.Music;
+package com.music.sound;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,7 +52,7 @@ public class Sound{
     public void loadSound(String mySoundPath, String mySoundName) {
             for (int octave = 0; octave <= 8; octave++) {
                 for (int noteName = 0; noteName <= validNotes.length - 1; noteName++) {
-                    path = System.getProperty("user.dir") + "\\" + "sounds" + "\\" + mySoundPath + "\\" + octave + validNotes[noteName] + "_" + mySoundName;
+                    path = System.getProperty("user.dir") + "\\" + "assets" + "\\" + "audio" + "\\" + mySoundPath + "\\" + octave + validNotes[noteName] + "_" + mySoundName;
                     Path myPath = Paths.get(path);
                     if(Files.notExists(myPath)){
                         continue;
