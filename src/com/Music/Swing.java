@@ -14,32 +14,29 @@ public class Swing extends JFrame implements ActionListener {
     JButton Interval;
     Sound sound = new Sound();
     Random rand = new Random();
-    private int monWidth = (int) tool.getWidth();
-    private int monHeight = (int) tool.getHeight();
-    int sizeModifier;
 
-    //Constructors
-    Swing(){
-
-    }
+    //is monitor resolution by default
+    private int screenWidth = (int) tool.getWidth();
+    private int screenHeight = (int) tool.getHeight();
 
     Swing(int width, int height){
-        this.monWidth = width;
-        this.monHeight = height;
+        this.screenWidth = width;
+        this.screenHeight = height;
         swingEnable();
     }
 
-    Swing(int sizeModifier){
-        this.sizeModifier = sizeModifier;
-        this.monWidth = monWidth / sizeModifier;
-        this.monHeight = monHeight / sizeModifier;
+    Swing(double sizeModifier){
+        this.screenWidth = (int) (screenWidth / sizeModifier);
+        this.screenHeight = (int) ( screenHeight / sizeModifier);
         swingEnable();
 }
 
-//Methods
+    Swing() {
+
+    }
 
     public String toString(){
-        return monWidth + " " + monHeight;
+        return screenWidth + " " + screenHeight;
     }
 
     public void swingEnable(){
@@ -52,17 +49,20 @@ public class Swing extends JFrame implements ActionListener {
         this.setTitle("Gustav");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setSize(monWidth, monHeight);
+        this.setSize(screenWidth, screenHeight);
     }
 
     public void placeSwingElements(){
-       int sidePanelSize = monWidth / 3;
-       int centerPanelSize = monWidth - sidePanelSize;
+        String whiteKey = "swing\\virtualpiano\\png\\whitekey1.png";
+        String blackKey = "swing\\virtualpiano\\png\\blackkey1.png";
+       int sidePanelSize = screenWidth / 3;
+       int centerPanelSize = screenWidth - sidePanelSize;
 
         ImageIcon image = new ImageIcon("swing/pianoicon.png");
         Interval = new JButton();
         try {
-            PianoKey key1 = new PianoKey("swing\\virtualpiano\\png\\blackkey1.png", 20, 150,20,50);
+            PianoKey key1 = new PianoKey(whiteKey, 20, 150,20,50);
+            PianoKey key2 = new PianoKey(blackKey, 40, 150, 20, 50);
         }catch(IOException e){
             e.getMessage();
         }
@@ -73,11 +73,11 @@ public class Swing extends JFrame implements ActionListener {
         Interval.setFocusable(false);
 
         sidePanel.setBackground(new Color(0xfef3bd));
-        sidePanel.setBounds(0,0,sidePanelSize,monHeight);
+        sidePanel.setBounds(0,0,sidePanelSize, screenHeight);
         sidePanel.setLayout(null);
 
         centerPanel.setBackground(Color.darkGray);
-        centerPanel.setBounds(sidePanelSize,0,centerPanelSize,monHeight);
+        centerPanel.setBounds(sidePanelSize,0,centerPanelSize, screenHeight);
         centerPanel.setLayout(null);
         centerPanel.add(Interval);
 
