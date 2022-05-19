@@ -7,16 +7,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Random;
 
 public class Swing extends JFrame implements ActionListener {
-    public static JPanel sidePanel = new JPanel();
-    public static JPanel centerPanel = new JPanel();
+    String whiteKey = "assets\\graphic\\virtualpiano\\png\\whitekey1.png";
+    String blackKey = "assets\\graphic\\virtualpiano\\png\\blackkey1.png";
+    static JPanel sidePanel = new JPanel();
+    static JPanel centerPanel = new JPanel();
     Dimension tool = Toolkit.getDefaultToolkit().getScreenSize();
     JButton Interval;
     Sound sound = new Sound();
     Random rand = new Random();
+    PianoKey key1;
+    PianoKey key2;
 
     //is monitor resolution by default
     private int screenWidth = (int) tool.getWidth();
@@ -56,19 +59,14 @@ public class Swing extends JFrame implements ActionListener {
     }
 
     public void placeSwingElements(){
-        String whiteKey = "swing\\virtualpiano\\png\\whitekey1.png";
-        String blackKey = "swing\\virtualpiano\\png\\blackkey1.png";
+        Interval = new JButton();
+        key1 = new PianoKey(blackKey, 100,50,50,50,true);
+        key2 = new PianoKey(whiteKey, 50, 50, 50,50,true);
+
        int sidePanelSize = screenWidth / 3;
        int centerPanelSize = screenWidth - sidePanelSize;
 
         ImageIcon image = new ImageIcon("swing/pianoicon.png");
-        Interval = new JButton();
-        try {
-            PianoKey key1 = new PianoKey(whiteKey, 20, 150,20,50);
-            PianoKey key2 = new PianoKey(blackKey, 40, 150, 20, 50);
-        }catch(IOException e){
-            e.getMessage();
-        }
 
         Interval.addActionListener(this);
         Interval.setBounds(0,0,130,50);
