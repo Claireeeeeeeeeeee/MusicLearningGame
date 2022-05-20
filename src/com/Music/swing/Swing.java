@@ -51,11 +51,12 @@ public class Swing extends JFrame implements ActionListener {
     }
 
     public void swingSettings() {
+        this.setSize(screenWidth, screenHeight);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setTitle("Gustav");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setSize(screenWidth, screenHeight);
     }
 
     public void placeSwingElements() {
