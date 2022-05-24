@@ -16,7 +16,7 @@ public class Tui extends Main
     public void select() {
         char select;
         while (true) {
-            System.out.println("M: ManualSound\nR: RandomSound\nI: Interval\nQ: Quit\nT: ToString");
+            System.out.println("\nM: ManualSound\nR: RandomSound\nI: Interval\nQ: Quit\nT: ToString");
             select = input.next().toUpperCase().charAt(0);
             switch (select) {
                 case 'R' -> sound.playSound(rand.nextInt(88));
