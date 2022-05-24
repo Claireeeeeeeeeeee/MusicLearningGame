@@ -7,18 +7,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class PianoKey extends Swing {
-    String keyPath;
     int keyID;
-    int x,y;
     JLabel pic;
+    static String path = "";
 
     //Location of image, and coordinates
+    //Currently unused
     public PianoKey(String path, int x, int y, int width, int height, boolean visible) {
         try {
-            keyPath = System.getProperty("user.dir") + "\\" + path;
-            System.out.println("key location: " + keyPath);
-            this.x = x;
-            this.y = y;
+            String keyPath = System.getProperty("user.dir") + "\\" + path;
             BufferedImage myPicture = ImageIO.read(new File(path));
             pic = new JLabel(new ImageIcon(myPicture));
             pic.setBounds(x, y, width, height);
@@ -46,21 +43,17 @@ public class PianoKey extends Swing {
         return this.keyID;
     }
 
-    public void setPath(String path) {
+    public void setKey(String path, int x, int y, int width, int height) {
         try {
-            keyPath = System.getProperty("user.dir") + "\\" + path;
-            System.out.println("key location: " + keyPath);
-            this.x = x;
-            this.y = y;
-            BufferedImage myPicture = ImageIO.read(new File(path));
+            String keyPath = System.getProperty("user.dir") + "\\" + path;
+            System.out.println("New Key" + pianoSize +":" + " " + keyPath);
+            BufferedImage myPicture = ImageIO.read(new File(keyPath));
             pic = new JLabel(new ImageIcon(myPicture));
+            pic.setBounds(x, y, width, height);
+            centerPanel.add(pic);
         }catch(IOException e){
             e.getMessage();
         }
-    }
-
-    public void setPosition(int x, int y, int width, int height){
-        pic.setBounds(x,y,width,height);
     }
 
     public void setVisible(boolean value){
