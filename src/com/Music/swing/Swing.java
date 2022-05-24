@@ -19,6 +19,7 @@ public class Swing extends JFrame implements ActionListener {
     Sound sound = new Sound();
     Random rand = new Random();
     PianoKey[] key;
+    static int pianoSize = 0;
 
     //is monitor resolution by default
     private int screenWidth = (int) tool.getWidth();
@@ -46,8 +47,8 @@ public class Swing extends JFrame implements ActionListener {
 
     public void swingEnable() {
         swingSettings();
+        makePiano();
         placeSwingElements();
-        makeKeys();
     }
 
     public void swingSettings() {
@@ -87,9 +88,93 @@ public class Swing extends JFrame implements ActionListener {
         this.add(centerPanel);
     }
 
-    public void makeKeys(){
-        for(int i=0;i<=87;i++)
-        keyArr.add(new PianoKey(i));
+    public void makePiano() {
+        String whiteKey = "assets\\graphic\\virtualpiano\\png\\whitekey1.png";
+        String blackKey = "assets\\graphic\\virtualpiano\\png\\blackkey1.png";
+        int x=10;
+        int y=screenHeight - 200;
+        int whiteKeyWidth=10;
+        int whiteKeyHeight=50;
+        int blackKeyWidth=10;
+        int blackKeyHeight=35;
+
+        //Create Keys
+        for (int i=0; i <=87; i++) {
+            keyArr.add(new PianoKey(i));
+        }
+
+        pianoloop:
+        for(int note=0; note<=11;note++){
+            switch(note){
+                case 0 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    x += whiteKeyWidth;
+                }
+                case 1 -> {
+                    keyArr.get(note).setKey(blackKey, x, y, blackKeyWidth, blackKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 2 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 3 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 4 -> {
+                    keyArr.get(note).setKey(blackKey, x, y, blackKeyWidth, blackKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 5 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 6 -> {
+                    keyArr.get(note).setKey(blackKey, x, y, blackKeyWidth, blackKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 7 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 8 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 9 -> {
+                    keyArr.get(note).setKey(blackKey, x, y, blackKeyWidth, blackKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 10 -> {
+                    keyArr.get(note).setKey(whiteKey, x, y, whiteKeyWidth, whiteKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+                case 11 -> {
+                    keyArr.get(note).setKey(blackKey, x, y, blackKeyWidth, blackKeyHeight);
+                    keyArr.get(note).setVisible(true);
+                    x += whiteKeyWidth;
+                }
+            }
+
+            if(pianoSize == 87){
+                break pianoloop;
+            }
+            pianoSize++;
+            if(note == 11){
+                note = -1;
+            }
+        }
     }
 
     //Listeners
