@@ -12,7 +12,7 @@ public class Main {
     Random rand = new Random();
 
     public static void main(String[] args){
-        new Swing(2);
+        new Swing(1.2);
         new Tui();
     }
 }
