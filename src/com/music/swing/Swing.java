@@ -66,6 +66,7 @@ public class Swing extends JFrame implements ActionListener {
         int centerPanelSize = screenWidth - sidePanelSize;
 
         ImageIcon image = new ImageIcon("assets/graphic/pianoicon.png");
+        PianoKey key = new PianoKey("assets\\graphic\\virtualpiano\\png\\whitekey1.png",100,100,50,50,true);
 
         Interval.addActionListener(this);
         Interval.setBounds(0, 0, 130, 50);
