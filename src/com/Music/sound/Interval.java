@@ -1,11 +1,9 @@
-package com.Music;
-
-import org.w3c.dom.ls.LSOutput;
+package com.music.sound;
 
 import java.util.InputMismatchException;
 import java.util.Random;
 
-public class Interval extends Sound{
+public class Interval extends Sound {
     Random rand = new Random();
     static int intervalSize;
 
